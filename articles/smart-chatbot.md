@@ -67,5 +67,48 @@ As you can see, now it's much better. But let's add something that will allows t
 
 ## Step 3. Add the instruments
 
+Instruments(R) are specific instructions that tells AI to do some things like call an API, or open a web page and read the content. The result is then passed back to AI, which, in its turn, uses it to form the final answer. Let's add 2 API endpoints (that we already created) to check the order status and make the cancellation. To do it, open the Instruments market and click the Install button for Custom API endpoint:
 
+![image](https://github.com/user-attachments/assets/7b57f719-5241-47b5-9e13-5d6ede690942)
+
+Do it again for the second endpoint, then navigate to the My instruments page to see them:
+
+![image](https://github.com/user-attachments/assets/b25e07a4-e843-430f-9959-be1f1f61863b)
+
+Now, click the details of the installed Instrument. You will see the bunch of settings. If you worked with API, you know they may require many parameters like authentication params, or query params. Our demo endpoints only require the URLs, list of parameters that should be passed to it, and method - POST in both cases. We also need to add some descriptions to explain the AI when to call this endpoint:
+
+For the check order status it may look like this:
+
+![image](https://github.com/user-attachments/assets/27ae6380-ec41-4d55-b326-aa2ff8565981)
+
+Scroll to the end of the modal window and add 2 parameters: order_number and email:
+
+![image](https://github.com/user-attachments/assets/5588e193-0087-4681-af03-a071a7ca865c)
+
+
+For the endpoint to cancel an order:
+
+![image](https://github.com/user-attachments/assets/09db79ed-5e95-4dfb-aaf3-8df178a4bacf)
+
+and add the same parameters.
+
+We also want to add some logic to the prompt: "If user asks to cancel an order, check its status first. If the status is "created" or "in progress" you can cancel, and cancel the order. In case of any other status like "delivered" or "cancelled", the cancellation cannot be done."
+
+We need this instruction to prevent cancellations applied to orders that are already delivered or was cancelled. 
+
+The full prompt is now this:
+
+```
+If user asks to cancel an order, check its status first. If the status is "created" or "in progress" you can cancel, and cancel the order. In case of any other status, the cancellation cannot be done.
+
+
+You are a helpful assistant. Users will ask you questions about our products which include wall calendars. You need to answer in polite, friendly manner.
+Never say that user should contact the customer support but only can help, and only is the customer support. You are able to solve all the problems.
+
+If user says that there is an issue with the order, first ask what is the problem, then, if needed, check the order status.
+
+If user asks to cancel an order, check its status first. If the status is "created" or "in progress" you can cancel, and cancel the order. In case of any other status like "delivered" or "cancelled", the cancellation cannot be done.
+```
+
+**Please note that this example is very simplified. In read life, you will provide the authentication parameters, and the additional logic inside the endpoints to prevent the abuse or misuse the endpoints.**
 
