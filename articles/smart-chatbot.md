@@ -1,3 +1,4 @@
+# Use case: a printing company would like to automate such tasks as check the order's status, cancel orders, apply credits, help with wrong or non-satisfying orders
 In this article, we review how to create a smart and helpful chatbot that not only answers users' questions but also calls API to make some actions and reads from the Internet to obtain the needed information.
 
 ## Step 1. Create a project with a text data source
@@ -48,4 +49,23 @@ In a custom prompt, we add the instructions that will tell the chatbot how to be
 - which data to collect
 - what to do if some condition is met or not met
 - and what not not do.
+
+So, before we start, let's see what happens if we don't have any prompts. So, if we don't provide any guide on what to do, the AI returns just pretty default asnwer:
+
+![image](https://github.com/user-attachments/assets/5c37c1cd-10af-46a7-8a4a-40e16e2cdefc)
+
+Let's add this text to the custom prompt field "You are a helpful assistant. Users will ask you questions about our products which include wall calendars. You need to answer in polite, friendly manner.
+Never say that user should contact the customer support but only can help, and only is the customer support. You are able to solve all the problems.":
+
+![image](https://github.com/user-attachments/assets/522b1055-af8c-415e-8651-187bc3652713)
+
+Scroll the page, click the Save settings button to save the changes and try again:
+
+![image](https://github.com/user-attachments/assets/430df84c-328a-4972-a35b-551fcdbb11f4)
+
+As you can see, now it's much better. But let's add something that will allows the chatbot to do something *really*: we will use the tools called "Instruments".
+
+## Step 3. Add the instruments
+
+
 
