@@ -123,3 +123,35 @@ As you can see, the chatbot works pretty well. To make sure that the correspondi
 To make the applying the credits possible, you need to add other endpoints and corresponding instructions. Now, let's add some fun.
 
 ## Step 4. Let AI use real time data
+
+Now, when you see how the Instruments for API endpoints work, you may ask "What if I don't have an endpoint, but I would like to provide access to real-time data?" Obviously, the data source can't be used in this case unless you update it pretty often. But in many cases, especially if some data is publicly avaialable, you just use the Instrument for reading the Internet content. In our case, we want to allow users to re-calculate the cost of orders and products into another currency. If we don't add any specific instruments, we may fail:
+
+![image](https://github.com/user-attachments/assets/055505fe-ad6b-4a4a-9b77-98c148cf9ca4)
+
+To fix the problem, let's add the corresponding Instrument called "Get URL content":
+
+![image](https://github.com/user-attachments/assets/74d92ed9-a4ed-44d5-aea7-8b50eb6eca57)
+
+As you can see it doesn't require any parameters at all. It just provides the inner tool to access the Internet when necessarily. Now, we need to tell AI which web page should be opened and read, so let's add this text to our custom prompt: "If user asks how much the order would cost in other, than American dollars, currency, ask which currency they want (if not provided), then open this page and recalculate the value from there - https://www.x-rates.com/table/?from=USD&amount=1"
+
+As you can see, this instruction contains a URL of web page that has the actual currency information:
+
+![image](https://github.com/user-attachments/assets/7c2ffb81-614d-423e-8813-9f3837653f77)
+
+
+Now, let's check again if it helps:
+
+![image](https://github.com/user-attachments/assets/9935aa17-ea56-4f32-afa1-1af3b4dd83b8)
+
+As you can see the AI successfully opened and read the content from this page, then passed data to the chatbot which used it to form the final answer.
+
+## Conclusion
+
+As you can see, using the Instruments(R) can turn your "so-so" chatbot to a real support that doesn't sleep and may work fast and effectively. Let's list some tasks that your chatbot equipped with Instruments can solve:
+
+- Extract the bug reports from the conversation and send data to the bug tracker
+- Generate texts/reports for marketing purposes baases on some actual information
+- Make calculations
+- Give recommendations based on user's position/situation
+- Search for and book flights, hotels, or car rentals and provide live updates on flight statuses or travel delays
+- Provide technical assistance and help with troubleshooting.
