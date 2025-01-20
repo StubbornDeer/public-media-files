@@ -108,7 +108,18 @@ Never say that user should contact the customer support but only can help, and o
 If user says that there is an issue with the order, first ask what is the problem, then, if needed, check the order status.
 
 If user asks to cancel an order, check its status first. If the status is "created" or "in progress" you can cancel, and cancel the order. In case of any other status like "delivered" or "cancelled", the cancellation cannot be done.
+
+If user is not satisfied with the order, suggest to apply the credits to his account - the sum of credit is cost of the order. You know the cost of the order by checking the order.
 ```
 
 **Please note that this example is very simplified. In read life, you will provide the authentication parameters, and the additional logic inside the endpoints to prevent the abuse or misuse the endpoints.**
 
+Let's see how it works:
+
+![image](https://github.com/user-attachments/assets/c6d0cecb-ba88-4fee-b37a-2dffef3ce42d)
+
+As you can see, the chatbot works pretty well. To make sure that the corresponding endpons have been called, please refer to the information on the right: it includes the URL of endpoint, payload (data that was passed) and sometimes, some additional information.
+
+To make the applying the credits possible, you need to add other endpoints and corresponding instructions. Now, let's add some fun.
+
+## Step 4. Let AI use real time data
