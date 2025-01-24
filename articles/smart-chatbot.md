@@ -1,4 +1,4 @@
-# Use case: a printing company would like to automate such tasks as check the order's status, cancel orders, apply credits, help with wrong or non-satisfying orders
+## Use case: a printing company would like to automate such tasks as check the order's status, cancel orders, apply credits, help with wrong or non-satisfying orders
 In this article, we review how to create a smart and helpful chatbot that not only answers users' questions but also calls API to make some actions and reads from the Internet to obtain the needed information.
 
 ## Step 1. Create a project with a text data source
